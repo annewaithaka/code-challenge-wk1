@@ -8,7 +8,7 @@ function calculateDemeritPoints(speed) {
     // No demerit points if speed is within limit
     }
 
-    // Calculate how many km/s the speed is over the limit
+    // Calculate how many km/s the speed is over the limit.
     let speedExceeded = speed - speedLimit;
 
     // Calculate demerit points
