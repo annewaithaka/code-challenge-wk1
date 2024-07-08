@@ -1,25 +1,38 @@
-function calculateDemeritPoints(speed) {
-    let speedLimit = 70;
-    let kmPerPoint = 5;
-    let maxpoints = 12;
+const readline = require("readline") // Imports Readline module for reading input 
+const rl = readline.createInterface({ // Creates an interface for reading input from the console
 
-    if (speed < speedLimit) {
-        return ("Ok");
-    // No demerit points if speed is within limit
-    }
+    input: process.stdin,
+    output: process.stdout
+})
+function calculateDemeritPoints() { // This is  a function that checks the speed by taking in inputs from the user
 
-    // Calculate how many km/s the speed is over the limit.
-    let speedExceeded = speed - speedLimit;
+    rl.question("What is your speed?: ", (speed) => {
+        speed = parseInt(speed);//convert speed from string to integer
+        if (isNaN(speed)) {// Checks weather the speed Input is not a number  
 
-    // Calculate demerit points
-    let demeritPoints = Math.floor(speedExceeded / kmPerPoint);{
+            console.log("Invalid number! Please enter a valid number.")
+            calculateDemeritPoints();
+        } else if (speed <= 70) {  // Statement begin from here 
+            console.log("Ok");
+            rl.close();
+        } else {  //  Calculation regarding highSpeed
+            const highSpeed = speed - 70;
+            const demeritPoints = Math.floor(highSpeed / 5);
 
-    // Output demerit points
-    return (`Points: ${demeritPoints}`);
-    }
-    // Check if license should be suspended
-    if (demeritPoints > maxpoints) {
-        return ("License suspended");
-    }
+            if (demeritPoints > 12) {  // Checks weather demeritPoints more than 12 and prints to the console 
+                console.log("license suspended");
+                rl.close();
+            } else {
+                console.log(`Points: ${ demeritPoints}`);
+                rl.close();
+            }
+        }
+    });
 }
+
+calculateDemeritPoints();// calls the function
+
+
+
+
 

@@ -1,12 +1,14 @@
 const { stdin } = require("process");
-const readline = require ("readline")
-const rl = readline.createInterface({
+const readline = require ("readline") // Imports Readline module for reading input 
+const rl = readline.createInterface({ // Creates an interface for reading input from the console
+
     input: process.stdin,
     output: process.stdout,
 })
-function gradeCalc() {
+function gradeCalc() { // This is a function that checks the grade by taking in inputs from the user and grading it between grade A to E
+
 rl.question("Please insert your marks : ", (marks) =>{
-    if (isNaN(marks) || marks === ' ' ){
+    if (isNaN(marks) || marks === ' ' ){ // Checks if the input is not a number or empty
         console.log("Invalid input!")
         return gradeCalc()
     }
@@ -21,7 +23,7 @@ rl.question("Please insert your marks : ", (marks) =>{
     } else {
         console.log("Grade E")
     }
-    rl.close()
+    rl.close() //closes the readline interfsce
 });
 }
-gradeCalc();
+gradeCalc(); //calls the fuction
